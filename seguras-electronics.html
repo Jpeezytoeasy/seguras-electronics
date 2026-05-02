@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Segura's Electronics — Hollister, CA</title>
+<meta name="description" content="Phones, accessories, toys, plushies & more in downtown Hollister. No tax added. Free screen protector install.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e1226;
+    --bg-2:#161b3a;
+    --card:#1c2147;
+    --card-2:#252b5c;
+    --accent:#ff3d8b;
+    --accent-2:#36e3ff;
+    --accent-3:#ffd23d;
+    --text:#f4f4ff;
+    --text-dim:#a8adcf;
+    --border:rgba(54,227,255,.18);
+    --ok:#3dffb0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{overflow-x:hidden;scroll-behavior:smooth}
+  body{
+    font-family:'Outfit', system-ui, -apple-system, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    font-size:16px;
+  }
+
+  body::before{
+    content:'';
+    position:fixed;inset:0;
+    background:
+      radial-gradient(circle at 15% 0%, rgba(255,61,139,.22), transparent 45%),
+      radial-gradient(circle at 90% 35%, rgba(54,227,255,.16), transparent 50%),
+      radial-gradient(circle at 50% 100%, rgba(255,210,61,.10), transparent 50%);
+    z-index:-2;
+    pointer-events:none;
+  }
+  body::after{
+    content:'';
+    position:fixed;inset:0;
+    background-image:
+      linear-gradient(rgba(54,227,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(54,227,255,.04) 1px, transparent 1px);
+    background-size:32px 32px;
+    z-index:-1;
+    pointer-events:none;
+    mask-image:radial-gradient(circle at center, black 30%, transparent 80%);
+  }
+
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(14,18,38,.85);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 18px;
+    max-width:560px;
+    margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand-logo{
+    width:36px;height:36px;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Press Start 2P', monospace;
+    font-size:14px;color:var(--bg);
+    border-radius:8px;
+    box-shadow:0 0 20px rgba(255,61,139,.4);
+  }
+  .brand-text{font-weight:800;font-size:15px;letter-spacing:.5px;line-height:1}
+  .brand-text small{
+    display:block;font-size:10px;color:var(--accent-2);
+    font-weight:500;margin-top:3px;letter-spacing:1px;text-transform:uppercase;
+  }
+  .status{
+    display:flex;align-items:center;gap:6px;
+    font-size:12px;font-weight:600;color:var(--accent);
+  }
+  .status .dot{
+    width:8px;height:8px;background:var(--accent);
+    border-radius:50%;box-shadow:0 0 8px var(--accent);
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  .status.open{color:var(--ok)}
+  .status.open .dot{background:var(--ok);box-shadow:0 0 8px var(--ok)}
+  @keyframes pulse{50%{opacity:.5}}
+
+  main{max-width:560px;margin:0 auto}
+
+  .hero{padding:36px 20px 30px;text-align:center;position:relative}
+  .hero-tag{
+    display:inline-block;
+    font-family:'Press Start 2P', monospace;
+    font-size:9px;color:var(--accent-3);
+    letter-spacing:1.5px;margin-bottom:16px;
+    padding:8px 12px;border:1px solid var(--accent-3);
+    border-radius:4px;background:rgba(255,210,61,.06);
+  }
+  h1{
+    font-size:48px;font-weight:900;
+    line-height:.95;letter-spacing:-2px;
+    margin-bottom:10px;
+    background:linear-gradient(135deg, #fff 0%, var(--accent-2) 50%, var(--accent) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-sub{color:var(--text-dim);font-size:17px;margin-bottom:18px;line-height:1.4}
+  .rating{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--card);border:1px solid var(--border);
+    padding:8px 14px;border-radius:100px;
+    font-size:14px;font-weight:600;margin-bottom:24px;
+  }
+  .rating .stars{color:var(--accent-3);letter-spacing:1px}
+  .rating .num{color:var(--accent-3)}
+  .rating .count{color:var(--text-dim);font-weight:500;font-size:13px}
+
+  .cta-row{display:flex;flex-direction:column;gap:10px}
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    padding:16px 22px;
+    font-family:'Outfit', sans-serif;
+    font-weight:700;font-size:15px;
+    border:none;border-radius:12px;
+    cursor:pointer;text-decoration:none;
+    letter-spacing:.3px;
+    transition:transform .15s, box-shadow .15s;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--accent), #ff6bab);
+    color:#fff;box-shadow:0 6px 20px rgba(255,61,139,.4);
+  }
+  .btn-secondary{
+    background:var(--card);color:var(--text);
+    border:1px solid var(--border);
+  }
+  .btn:active{transform:scale(.98)}
+  .btn-primary:active{box-shadow:0 3px 10px rgba(255,61,139,.4)}
+
+  section{padding:32px 20px;position:relative}
+  .section-tag{
+    font-family:'Press Start 2P', monospace;
+    font-size:9px;color:var(--accent-2);
+    letter-spacing:1.5px;margin-bottom:8px;
+  }
+  h2{
+    font-size:30px;font-weight:800;
+    letter-spacing:-1px;line-height:1.05;margin-bottom:8px;
+  }
+  .section-sub{color:var(--text-dim);font-size:15px;margin-bottom:22px}
+
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:10px;margin-bottom:14px;
+  }
+  .photo{
+    aspect-ratio:1/1;border-radius:12px;overflow:hidden;
+    background:linear-gradient(135deg, var(--card), var(--card-2));
+    border:1px solid var(--border);position:relative;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--text-dim);
+  }
+  .photo .placeholder{text-align:center;padding:14px;font-size:12px;line-height:1.4}
+  .photo .placeholder .icon{font-size:36px;margin-bottom:8px;display:block;opacity:.7}
+  .photo .placeholder strong{color:var(--text);font-size:13px;display:block;margin-bottom:4px}
+  .photo .label{
+    position:absolute;bottom:8px;left:8px;
+    background:rgba(14,18,38,.85);backdrop-filter:blur(8px);
+    color:#fff;font-size:11px;font-weight:600;
+    padding:5px 9px;border-radius:6px;letter-spacing:.3px;
+  }
+  .gallery-cta{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;padding:14px;
+    background:var(--card);border:1px dashed var(--border);
+    border-radius:12px;
+    color:var(--accent-2);text-decoration:none;
+    font-weight:600;font-size:14px;
+  }
+
+  .categories{display:grid;grid-template-columns:repeat(2, 1fr);gap:10px}
+  .cat{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:14px;padding:18px 14px;
+    position:relative;overflow:hidden;
+    transition:transform .2s, border-color .2s;
+  }
+  .cat:active{transform:scale(.97)}
+  .cat::before{
+    content:'';position:absolute;top:0;left:0;right:0;
+    height:2px;background:var(--accent);
+  }
+  .cat:nth-child(2)::before{background:var(--accent-2)}
+  .cat:nth-child(3)::before{background:var(--accent-3)}
+  .cat:nth-child(4)::before{background:var(--ok)}
+  .cat:nth-child(5)::before{background:var(--accent-2)}
+  .cat:nth-child(6)::before{background:var(--accent)}
+  .cat-icon{font-size:32px;margin-bottom:8px;display:block}
+  .cat-name{font-weight:700;font-size:15px;margin-bottom:4px}
+  .cat-desc{color:var(--text-dim);font-size:13px;line-height:1.35}
+
+  .perks{
+    background:linear-gradient(135deg, var(--card), var(--card-2));
+    border:1px solid var(--border);
+    border-radius:18px;padding:24px 20px;
+    position:relative;overflow:hidden;
+  }
+  .perks::before{
+    content:'';position:absolute;top:-40px;right:-40px;
+    width:140px;height:140px;
+    background:radial-gradient(circle, var(--accent), transparent 70%);
+    opacity:.25;border-radius:50%;
+  }
+  .perk{
+    display:flex;align-items:flex-start;gap:14px;
+    padding:14px 0;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    position:relative;
+  }
+  .perk:first-child{padding-top:0}
+  .perk:last-child{padding-bottom:0;border-bottom:none}
+  .perk-icon{
+    flex-shrink:0;width:42px;height:42px;
+    background:rgba(54,227,255,.12);color:var(--accent-2);
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;
+  }
+  .perk:nth-child(2) .perk-icon{background:rgba(255,210,61,.12);color:var(--accent-3)}
+  .perk:nth-child(3) .perk-icon{background:rgba(255,61,139,.12);color:var(--accent)}
+  .perk-body h3{font-size:15px;font-weight:700;margin-bottom:3px}
+  .perk-body p{color:var(--text-dim);font-size:14px;line-height:1.4}
+
+  .review{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:16px;padding:18px;margin-bottom:12px;
+  }
+  .review-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .avatar{
+    width:42px;height:42px;border-radius:50%;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:#fff;flex-shrink:0;
+  }
+  .avatar.b{background:linear-gradient(135deg, var(--accent-3), var(--accent))}
+  .avatar.c{background:linear-gradient(135deg, var(--ok), var(--accent-2))}
+  .reviewer{flex:1;min-width:0}
+  .reviewer-name{font-weight:700;font-size:14px;margin-bottom:2px}
+  .reviewer-meta{font-size:12px;color:var(--text-dim)}
+  .review-stars{
+    color:var(--accent-3);font-size:13px;
+    letter-spacing:1px;margin-bottom:8px;
+  }
+  .review-text{font-size:15px;color:var(--text);line-height:1.5}
+
+  .info-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:16px;padding:20px;margin-bottom:14px;
+  }
+  .info-card h3{
+    font-size:13px;font-weight:700;color:var(--text-dim);
+    text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;
+  }
+  .hours-list{list-style:none}
+  .hours-list li{
+    display:flex;justify-content:space-between;
+    padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);
+    font-size:15px;
+  }
+  .hours-list li:last-child{border-bottom:none}
+  .hours-list .day{font-weight:500;color:var(--text-dim)}
+  .hours-list .time{font-weight:600}
+  .hours-list .closed .time{color:var(--accent)}
+  .hours-list .today{
+    margin:0 -12px;padding-left:12px;padding-right:12px;
+    background:rgba(54,227,255,.08);
+    border-radius:8px;border-bottom-color:transparent;
+  }
+  .hours-list .today .day{color:var(--accent-2);font-weight:700}
+  .hours-list .today .day::after{content:' · TODAY';font-size:10px;letter-spacing:1px}
+
+  .map-embed{
+    width:100%;aspect-ratio:16/10;
+    border:0;border-radius:12px;
+    margin-bottom:14px;background:var(--bg-2);
+  }
+  .address{font-size:15px;line-height:1.5}
+  .address strong{color:var(--accent-2)}
+  .address .plus{
+    font-family:'Press Start 2P', monospace;
+    font-size:10px;color:var(--text-dim);
+    display:inline-block;margin-top:6px;letter-spacing:1px;
+  }
+
+  .final-cta{
+    background:linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    border-radius:20px;padding:32px 22px;
+    text-align:center;margin:20px;
+    position:relative;overflow:hidden;
+  }
+  .final-cta::before{
+    content:'';position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+    background-size:24px 24px;pointer-events:none;
+  }
+  .final-cta h2{
+    color:#fff;font-size:26px;margin-bottom:8px;
+    text-shadow:0 2px 8px rgba(0,0,0,.2);
+  }
+  .final-cta p{
+    color:rgba(255,255,255,.92);font-size:15px;
+    margin-bottom:20px;position:relative;
+  }
+  .final-cta .btn{
+    background:#fff;color:var(--accent);
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+  }
+
+  footer{
+    text-align:center;padding:30px 20px 40px;
+    color:var(--text-dim);font-size:13px;line-height:1.6;
+  }
+  footer .heart{color:var(--accent)}
+
+  @media (min-width:560px){h1{font-size:60px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-logo">S</div>
+      <div class="brand-text">
+        Segura's
+        <small>Electronics</small>
+      </div>
+    </div>
+    <div class="status" id="statusPill">
+      <span class="dot"></span>
+      <span id="statusText">Closed</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-tag">◆ HOLLISTER, CA ◆</div>
+    <h1>Phones, toys<br>&amp; everything fun.</h1>
+    <p class="hero-sub">Your neighborhood electronics &amp; gift shop on McCray Street. Phone cases, screen protectors, smart watches, plushies, toys, and more — with no tax added.</p>
+    <div class="rating">
+      <span class="stars">★★★★★</span>
+      <span class="num">5.0</span>
+      <span class="count">· 3 Google reviews</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Segura%27s+electronics+McCray+St+Hollister+CA+95023&query_place_id=ChIJ56v3Kdv3kYARSv8fmOKkKqA" target="_blank" rel="noopener">
+        <span>📍</span> Get Directions
+      </a>
+      <a class="btn btn-secondary" href="#shop">
+        <span>🛍️</span> See What We Sell
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-tag">◆ STORE PHOTOS ◆</div>
+    <h2>Take a look inside</h2>
+    <p class="section-sub">A peek at the shop on McCray Street.</p>
+
+    <div class="gallery">
+      <div class="photo">
+        <div class="placeholder">
+          <span class="icon">🏪</span>
+          <strong>Storefront</strong>
+          <span>The McCray St. shop</span>
+        </div>
+        <span class="label">Storefront</span>
+      </div>
+      <div class="photo">
+        <div class="placeholder">
+          <span class="icon">📱</span>
+          <strong>Phone Wall</strong>
+          <span>Cases &amp; accessories</span>
+        </div>
+        <span class="label">Phone Cases</span>
+      </div>
+      <div class="photo">
+        <div class="placeholder">
+          <span class="icon">🧸</span>
+          <strong>Plushies</strong>
+          <span>All sizes</span>
+        </div>
+        <span class="label">Toys &amp; Plushies</span>
+      </div>
+      <div class="photo">
+        <div class="placeholder">
+          <span class="icon">⌚</span>
+          <strong>Smart Watches</strong>
+          <span>Adults &amp; kids</span>
+        </div>
+        <span class="label">Smart Watches</span>
+      </div>
+    </div>
+
+    <a class="gallery-cta" href="https://www.google.com/maps/search/?api=1&query=Segura%27s+electronics+McCray+St+Hollister+CA+95023&query_place_id=ChIJ56v3Kdv3kYARSv8fmOKkKqA" target="_blank" rel="noopener">
+      📸 See more photos on Google Maps →
+    </a>
+  </section>
+
+  <section id="shop">
+    <div class="section-tag">◆ WHAT WE SELL ◆</div>
+    <h2>A little bit of everything</h2>
+    <p class="section-sub">From phone fixes to birthday gifts — we've got it.</p>
+
+    <div class="categories">
+      <div class="cat">
+        <span class="cat-icon">📱</span>
+        <div class="cat-name">Phone Cases</div>
+        <div class="cat-desc">Tons of styles for every model</div>
+      </div>
+      <div class="cat">
+        <span class="cat-icon">🛡️</span>
+        <div class="cat-name">Screen Protectors</div>
+        <div class="cat-desc">Including privacy ones</div>
+      </div>
+      <div class="cat">
+        <span class="cat-icon">⌚</span>
+        <div class="cat-name">Smart Watches</div>
+        <div class="cat-desc">Affordable picks for kids too</div>
+      </div>
+      <div class="cat">
+        <span class="cat-icon">🧸</span>
+        <div class="cat-name">Plushies</div>
+        <div class="cat-desc">Big, small &amp; everything between</div>
+      </div>
+      <div class="cat">
+        <span class="cat-icon">🎁</span>
+        <div class="cat-name">Toys &amp; Gifts</div>
+        <div class="cat-desc">Birthdays, holidays, just because</div>
+      </div>
+      <div class="cat">
+        <span class="cat-icon">☕</span>
+        <div class="cat-name">Cups &amp; More</div>
+        <div class="cat-desc">Mugs, accessories, surprises</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-tag">◆ WHY SEGURA'S ◆</div>
+    <h2>Why people keep coming back</h2>
+    <p class="section-sub">Real reasons from real customers.</p>
+
+    <div class="perks">
+      <div class="perk">
+        <div class="perk-icon">💰</div>
+        <div class="perk-body">
+          <h3>No tax added</h3>
+          <p>The price you see on the tag is the price you pay at the register.</p>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="perk-icon">⚡</div>
+        <div class="perk-body">
+          <h3>Free, fast install</h3>
+          <p>Buy a screen protector and we put it on for you — quickly and cleanly.</p>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="perk-icon">💝</div>
+        <div class="perk-body">
+          <h3>Gifts for every budget</h3>
+          <p>From small plushies to smart watches that won't break the bank.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-tag">◆ CUSTOMER LOVE ◆</div>
+    <h2>5.0 on Google</h2>
+    <p class="section-sub">What folks in Hollister are saying.</p>
+
+    <div class="review">
+      <div class="review-head">
+        <div class="avatar">SP</div>
+        <div class="reviewer">
+          <div class="reviewer-name">Steven Palestini</div>
+          <div class="reviewer-meta">Local Guide · 16 reviews</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"One of the greatest electronics stores in Hollister. So many great things to choose from, and they don't add tax — the price you see is what you pay. They have screen protectors, even privacy ones. They put them on for you, and quickly!"</p>
+    </div>
+
+    <div class="review">
+      <div class="review-head">
+        <div class="avatar b">EM</div>
+        <div class="reviewer">
+          <div class="reviewer-name">Esmeralda Mnz</div>
+          <div class="reviewer-meta">Local Guide · 141 reviews</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"They have a lot of stuff. Phone cases in my budget, smart watches (great for kids if you don't want to spend a lot), plushies all sizes, cups, toys… WOW!! Now I know where to come to purchase presents!"</p>
+    </div>
+
+    <div class="review">
+      <div class="review-head">
+        <div class="avatar c">CA</div>
+        <div class="reviewer">
+          <div class="reviewer-name">Cynthia Arrizon</div>
+          <div class="reviewer-meta">9 reviews · 1 photo</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Five stars from another satisfied local."</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-tag">◆ HOURS ◆</div>
+    <h2>When we're open</h2>
+    <p class="section-sub">Stop by any day except Sunday.</p>
+
+    <div class="info-card">
+      <h3>Store Hours</h3>
+      <ul class="hours-list" id="hoursList">
+        <li data-day="1"><span class="day">Monday</span><span class="time">10:00 AM – 7:00 PM</span></li>
+        <li data-day="2"><span class="day">Tuesday</span><span class="time">10:00 AM – 7:00 PM</span></li>
+        <li data-day="3"><span class="day">Wednesday</span><span class="time">10:00 AM – 7:00 PM</span></li>
+        <li data-day="4"><span class="day">Thursday</span><span class="time">10:00 AM – 7:00 PM</span></li>
+        <li data-day="5"><span class="day">Friday</span><span class="time">10:00 AM – 7:00 PM</span></li>
+        <li data-day="6"><span class="day">Saturday</span><span class="time">9:30 AM – 6:30 PM</span></li>
+        <li data-day="0" class="closed"><span class="day">Sunday</span><span class="time">Closed</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-tag">◆ FIND US ◆</div>
+    <h2>On McCray Street</h2>
+    <p class="section-sub">Easy to find in downtown Hollister.</p>
+
+    <div class="info-card">
+      <iframe class="map-embed" loading="lazy" allowfullscreen
+        src="https://www.google.com/maps?q=Segura%27s+electronics+McCray+St+Hollister+CA+95023&output=embed"></iframe>
+      <div class="address">
+        <strong>Segura's Electronics</strong><br>
+        McCray St, Hollister, CA 95023<br>
+        <span class="plus">VJ32+MV HOLLISTER</span>
+      </div>
+      <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Segura%27s+electronics+McCray+St+Hollister+CA+95023&query_place_id=ChIJ56v3Kdv3kYARSv8fmOKkKqA" target="_blank" rel="noopener" style="margin-top:16px;">
+        <span>🗺️</span> Open in Google Maps
+      </a>
+    </div>
+  </section>
+
+  <div class="final-cta">
+    <h2>Come say hi 👋</h2>
+    <p>Drop in and see what's new. No appointment needed.</p>
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Segura%27s+electronics+McCray+St+Hollister+CA+95023&query_place_id=ChIJ56v3Kdv3kYARSv8fmOKkKqA" target="_blank" rel="noopener">
+      <span>📍</span> Get Directions
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  © Segura's Electronics · Hollister, CA<br>
+  Family-owned &amp; locally operated <span class="heart">♥</span>
+</footer>
+
+<script>
+  (function() {
+    const hours = {
+      0: null,
+      1: [10*60, 19*60],
+      2: [10*60, 19*60],
+      3: [10*60, 19*60],
+      4: [10*60, 19*60],
+      5: [10*60, 19*60],
+      6: [9*60+30, 18*60+30]
+    };
+    const now = new Date();
+    const day = now.getDay();
+    const minutes = now.getHours()*60 + now.getMinutes();
+    const today = hours[day];
+    const open = today && minutes >= today[0] && minutes < today[1];
+
+    const pill = document.getElementById('statusPill');
+    const text = document.getElementById('statusText');
+    if (open) {
+      pill.classList.add('open');
+      const closeH = Math.floor(today[1]/60);
+      const closeM = today[1]%60;
+      const ampm = closeH >= 12 ? 'PM' : 'AM';
+      const h12 = closeH > 12 ? closeH-12 : closeH;
+      text.textContent = `Open · until ${h12}${closeM ? ':'+String(closeM).padStart(2,'0') : ''} ${ampm}`;
+    } else {
+      let nd = day;
+      for (let i=1;i<=7;i++){
+        nd = (day+i)%7;
+        if (hours[nd]) break;
+      }
+      const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      const next = hours[nd];
+      const oh = Math.floor(next[0]/60);
+      const om = next[0]%60;
+      const ampm = oh >= 12 ? 'PM' : 'AM';
+      const h12 = oh > 12 ? oh-12 : oh;
+      const label = nd === (day+1)%7 ? 'tomorrow' : days[nd];
+      text.textContent = `Closed · opens ${label} ${h12}${om ? ':'+String(om).padStart(2,'0') : ''} ${ampm}`;
+    }
+
+    const li = document.querySelector(`#hoursList li[data-day="${day}"]`);
+    if (li && day !== 0) li.classList.add('today');
+  })();
+</script>
+
+</body>
+</html>
